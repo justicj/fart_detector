@@ -23,10 +23,10 @@ def detect_fart(trigger):
 
 def clear_the_air(wait_time):
     for i in range(wait_time):
-        print "Waiting for " + wait_time + " seconds, for the air to clear!"
+        print "Waiting for " + str(i) + " seconds, for the air to clear!"
         sleep(1)
 
-while true:
+while True:
     fart = detect_fart(trigger)
     if fart == 1:
         clear_the_air(wait_time)
