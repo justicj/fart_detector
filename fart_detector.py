@@ -23,7 +23,8 @@ def detect_fart(trigger):
 
 def clear_the_air(wait_time):
     for i in range(wait_time):
-        print "Waiting for " + str(i) + " seconds, for the air to clear!"
+        time_left = wait_time - i
+        print "Waiting for " + str(time_left) + " seconds, for the air to clear!"
         sleep(1)
 
 while True:
