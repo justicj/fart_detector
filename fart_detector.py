@@ -1,7 +1,6 @@
 #!/usr/bin/python
 import time, RPi.GPIO as GPIO
 from time import sleep
-GPIO.cleanup()
 trigger = 4
 fart = 0
 wait_time = 15
@@ -31,3 +30,5 @@ while True:
     fart = detect_fart(trigger)
     if fart == 1:
         clear_the_air(wait_time)
+
+GPIO.cleanup()
