@@ -1,11 +1,12 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 import time
 import RPi.GPIO as GPIO
 from time import sleep
 import os
 trigger = 4
 fart = 0
-wait_time = 15
+wait_time = 10
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(trigger, GPIO.IN)
 
@@ -28,21 +29,27 @@ def detect_fart(trigger):
         i = GPIO.input(trigger)
         if i == 1:
             print "Fart Detected!"
+	    print "¯\_(ツ)_/¯"
             fart = 1
-            sleep(3)
+            sleep(0)
             break
         sleep(0.1)
     return fart
 
 
 def clear_the_air(wait_time):
+    from pygame import mixer    
+    mixer.init()
+    mixer.music.load("evacuate.mp3")
     for i in range(wait_time):
         time_left = wait_time - i
         print 'Waiting ' + str(time_left) + ' seconds for the air to clear!'
-        sleep(1)
+	mixer.music.play(1)
+	sleep(1)
         clean_up = os.system("clear")
         print "Fart Detected!"
-
+	print "¯\_(ツ)_/¯"
+    mixer.music.stop()
 
 while True:
     fart = detect_fart(trigger)
